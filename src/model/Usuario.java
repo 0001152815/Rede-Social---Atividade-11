@@ -1,28 +1,23 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+
 public class Usuario {
+    private int id;
+    private String nome;
+    private String email;
+    private String senha; // A senha não estava explícita nos atributos, mas é necessária para a função de cadastro/login
+    private LocalDate dataCadastro;
 
-        Scanner sc = new Scanner(System.in);
-
-    // --- Atributos (Attributes) ---
-    private int id; // Identificador único do usuário
-    private String nome; // Nome completo ou de exibição do usuário
-    private String email; // Endereço de e-mail do usuário (geralmente único)
-    private String senha; // Senha do usuário (idealmente armazenada como hash)
-    private LocalDate dataCadastro; // Data em que o usuário foi cadastrado
-
-    // --- Construtor para Novo Cadastro (Define a data de cadastro para 'hoje') ---
-    public Usuario(int nome, String email, String senha) {
+    // Construtor
+    public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        // Atribui a data de cadastro como a data atual do sistema
         this.dataCadastro = LocalDate.now();
     }
 
-    // --- Construtor Completo (Geralmente usado para recuperar dados do banco) ---
+    // Construtor completo (útil ao buscar dados do banco)
     public Usuario(int id, String nome, String email, String senha, LocalDate dataCadastro) {
         this.id = id;
         this.nome = nome;
@@ -31,97 +26,44 @@ public class Usuario {
         this.dataCadastro = dataCadastro;
     }
 
-    // ------------------------------------
-    // --- Getters (Métodos de Acesso aos Atributos) ---
-    // ------------------------------------
-
-    public int getId() {
-        return id;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
+    // Métodos de Ação (Implementação simulada, a lógica real estará no DAO/Service)
+    public void implementarCadastrarUsuario() {
+        // Lógica de cadastro (será chamada pelo DAO)
+        System.out.println("Usuário " + this.nome + " cadastrado.");
     }
 
-    // ------------------------------------
-    // --- Setters (Métodos de Modificação dos Atributos) ---
-    // ------------------------------------
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
+    public void implementarAtualizarUsuario() {
+        // Lógica de atualização
+        System.out.println("Dados do usuário " + this.id + " atualizados.");
     }
 
-    // ------------------------------------
-    // --- Métodos de Negócio (Declaração sem Implementação) ---
-    // ------------------------------------
-
-    /**
-     * Implementar cadastrarUsuario().
-     * (Lógica para persistir o novo usuário em uma base de dados.)
-     */
-    public void cadastrarUsuario(){
-
-        System.out.println("Digite seu nome: ");
-        setNome(sc.nextLine());
-
-        System.out.println("Digite seu email: ");
-        setEmail(sc.nextLine());
-
-        System.out.println("Digite seu senha: ");
-        setSenha(sc.nextLine());
-
+    public void implementarExcluirUsuario() {
+        // Lógica de exclusão
+        System.out.println("Usuário " + this.id + " excluído.");
     }
 
-    /**
-     * Implementar atualizarUSusario().
-     * (Lógica para modificar os dados de um usuário existente na base de dados.)
-     */
-    public void atualizarUSusario(){
-        System.out.println("Gigite seu novo nome: ");
-        setNome(sc.nextLine());
-
-        System.out.println("Gigite seu novo email: ");
-        setEmail(sc.nextLine());
-
-        System.out.println("Gigite seu nova senha: ");
-        setSenha(sc.nextLine());
+    public void implementarExibirInformacoes() {
+        System.out.println("--- Informações do Usuário ---");
+        System.out.println("ID: " + this.id);
+        System.out.println("Nome: " + this.nome);
+        System.out.println("Email: " + this.email);
+        System.out.println("Data de Cadastro: " + this.dataCadastro);
+        System.out.println("------------------------------");
     }
 
-    /**
-     * Implementar excluirUsuario().
-     * (Lógica para remover o registro do usuário da base de dados.)
-     */
-    public void excluirUsuario(){
-        try {
+    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-        }
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    /**
-     * Implementar exibirInformacoes(int id).
-     * (Lógica para buscar e exibir os dados de um usuário específico.)
-     */
-    public void exibirInformacoes(int id){
-        // Lógica de implementação para exibir as informações do usuário.
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+
+    public LocalDate getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDate dataCadastro) { this.dataCadastro = dataCadastro; }
 }

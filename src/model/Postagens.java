@@ -2,89 +2,68 @@ package model;
 
 import java.time.LocalDate;
 
-public class Postagens{
-
-    // --- Atributos (Attributes) ---
-    // Correspondentes a: int id, int usuarioId, String conteudo, LocalDate dataPostagem
+public class Usuario {
     private int id;
-    private int usuarioId;
-    private String conteudo;
-    private LocalDate dataPostagem;
+    private String nome;
+    private String email;
+    private String senha; // A senha não estava explícita nos atributos, mas é necessária para a função de cadastro/login
+    private LocalDate dataCadastro;
 
-    // --- Construtor Padrão ---
-    public Postagens() {
-        // Construtor vazio
+    // Construtor
+    public Usuario(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataCadastro = LocalDate.now();
     }
 
-    // ------------------------------------
-    // --- Getters e Setters (Acessores) ---
-    // ------------------------------------
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    // Construtor completo (útil ao buscar dados do banco)
+    public Usuario(int id, String nome, String email, String senha, LocalDate dataCadastro) {
         this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataCadastro = dataCadastro;
     }
 
-    public int getUsuarioId() {
-        return usuarioId;
+    // Métodos de Ação (Implementação simulada, a lógica real estará no DAO/Service)
+    public void implementarCadastrarUsuario() {
+        // Lógica de cadastro (será chamada pelo DAO)
+        System.out.println("Usuário " + this.nome + " cadastrado.");
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
+    public void implementarAtualizarUsuario() {
+        // Lógica de atualização
+        System.out.println("Dados do usuário " + this.id + " atualizados.");
     }
 
-    public String getConteudo() {
-        return conteudo;
+    public void implementarExcluirUsuario() {
+        // Lógica de exclusão
+        System.out.println("Usuário " + this.id + " excluído.");
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+    public void implementarExibirInformacoes() {
+        System.out.println("--- Informações do Usuário ---");
+        System.out.println("ID: " + this.id);
+        System.out.println("Nome: " + this.nome);
+        System.out.println("Email: " + this.email);
+        System.out.println("Data de Cadastro: " + this.dataCadastro);
+        System.out.println("------------------------------");
     }
 
-    public LocalDate getDataPostagem() {
-        return dataPostagem;
-    }
+    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setDataPostagem(LocalDate dataPostagem) {
-        this.dataPostagem = dataPostagem;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    // ------------------------------------
-    // --- Métodos Solicitados (Declaração sem Implementação) ---
-    // ------------------------------------
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    /**
-     * Implementar criarPostagem() para inserir nova postagem.
-     * (Apenas a declaração do método, como solicitado.)
-     */
-    public void criarPostagem(String novoConteudo) {
-        // Lógica de implementação para inserção da postagem.
-    }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
-    /**
-     * Implementar atualizarPostagem() para editar o conteúdo.
-     * (Apenas a declaração do método, como solicitado.)
-     */
-    public void atualizarPostagem(String novoConteudo) {
-        // Lógica de implementação para edição do conteúdo.
-    }
-
-    /**
-     * Implementar excluirPostagem() para remover a postagem.
-     * (Apenas a declaração do método, como solicitado.)
-     */
-    public void excluirPostagem() {
-        // Lógica de implementação para remoção da postagem.
-    }
-
-    /**
-     * Implementar exibirPostagem() para mostrar o conteúdo.
-     * (Apenas a declaração do método, como solicitado.)
-     */
-    public void exibirPostagem() {
-        // Lógica de implementação para exibição do conteúdo.
-    }
-}
+    public LocalDate getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDate dataCadastro) { this.dataCadastro = dataCadastro; }
+}}
